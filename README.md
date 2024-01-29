@@ -60,6 +60,12 @@ Notebook: [Home_Sales.ipynb](Home_Sales.ipynb)
 
 - What is the "view" rating for homes costing more than or equal to $350,000? Determine the run time for this query, and round off your answer to two decimal places.
 
+    - **Unchached data runtime:** 1.2410962581634521 seconds
+
+    - **Cached data runtime:** 1.0017509460449219 seconds
+
+    - **Partitioned parquet data runtime:** 2.0394458770751953 seconds
+
     ```
     +----+-------------+
     |view|average_price|
@@ -87,10 +93,6 @@ Notebook: [Home_Sales.ipynb](Home_Sales.ipynb)
     +----+-------------+
     only showing top 20 rows
     ```
-
-    - **Unchached data runtime:** 1.2410962581634521 seconds
-    - **Cached data runtime:** 1.0017509460449219 seconds
-    - **Partitioned parquet data runtime:** 2.0394458770751953 seconds
 
 ---
 
