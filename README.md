@@ -13,70 +13,84 @@ This repo contains my work for the challenge that corresponds to Module 22 of th
 Notebook: [Home_Sales.ipynb](Home_Sales.ipynb)
 
 
-## Instructions
+## Results
 
-1. Rename the `Home_Sales_starter_code.ipynb` file as `Home_Sales.ipynb`.
+- What is the average price for a four-bedroom house sold for each year? Round off your answer to two decimal places.
 
-2. Import the necessary PySpark SQL functions for this assignment.
+    ```
+    +----------+-------------+
+    |year(date)|average_price|
+    +----------+-------------+
+    |      2019|     300263.7|
+    |      2020|    298353.78|
+    |      2021|    301819.44|
+    |      2022|    296363.88|
+    +----------+-------------+
+    ```
 
-3. Read the `home_sales_revised.csv` data in the starter code into a Spark DataFrame.
+- What is the average price of a home for each year it was built that has three bedrooms and three bathrooms? Round off your answer to two decimal places.
 
-4. Create a temporary table called `home_sales`.
+    ```
+    +----------+-------------+
+    |year(date)|average_price|
+    +----------+-------------+
+    |      2019|     300263.7|
+    |      2020|    298353.78|
+    |      2021|    301819.44|
+    |      2022|    296363.88|
+    +----------+-------------+
+    ```
 
-5. Answer the following questions using SparkSQL:
+- What is the average price of a home for each year that has three bedrooms, three bathrooms, two floors, and is greater than or equal to 2,000 square feet? Round off your answer to two decimal places.
 
-    - What is the average price for a four-bedroom house sold for each year? Round off your answer to two decimal places.
+    ```
+    +----------+-------------+
+    |date_built|average_price|
+    +----------+-------------+
+    |      2010|    285010.22|
+    |      2011|    276553.81|
+    |      2012|    307539.97|
+    |      2013|    303676.79|
+    |      2014|    298264.72|
+    |      2015|    297609.97|
+    |      2016|     293965.1|
+    |      2017|    280317.58|
+    +----------+-------------+
+    ```
 
-    - What is the average price of a home for each year it was built that has three bedrooms and three bathrooms? Round off your answer to two decimal places.
+- What is the "view" rating for homes costing more than or equal to $350,000? Determine the run time for this query, and round off your answer to two decimal places.
 
-    - What is the average price of a home for each year that has three bedrooms, three bathrooms, two floors, and is greater than or equal to 2,000 square feet? Round off your answer to two decimal places.
+    ```
+    +----+-------------+
+    |view|average_price|
+    +----+-------------+
+    |   0|    403848.51|
+    |   1|    401044.25|
+    |   2|    397389.25|
+    |   3|     398867.6|
+    |   4|    399631.89|
+    |   5|    401471.82|
+    |   6|    395655.38|
+    |   7|    403005.77|
+    |   8|    398592.71|
+    |   9|    401393.34|
+    |  10|    401868.43|
+    |  11|    399548.12|
+    |  12|    401501.32|
+    |  13|    398917.98|
+    |  14|    398570.03|
+    |  15|     404673.3|
+    |  16|    399586.53|
+    |  17|    398474.49|
+    |  18|    399332.91|
+    |  19|    398953.17|
+    +----+-------------+
+    only showing top 20 rows
+    ```
 
-    - What is the "view" rating for homes costing more than or equal to $350,000? Determine the run time for this query, and round off your answer to two decimal places.
-
-6. Cache your temporary table `home_sales`.
-
-7. Check if your temporary table is cached.
-
-8. Using the cached data, run the query that filters out the view ratings with an average price of greater than or equal to $350,000. Determine the runtime and compare it to uncached runtime.
-
-9. Partition by the "date_built" field on the formatted parquet home sales data.
-
-10. Create a temporary table for the parquet data.
-
-11. Run the query that filters out the view ratings with an average price of greater than or equal to $350,000. Determine the runtime and compare it to uncached runtime.
-
-12. Uncache the `home_sales` temporary table.
-
-13. Verify that the `home_sales` temporary table is uncached using PySpark.
-
-14. Download your `Home_Sales.ipynb` file and upload it into your "Home_Sales" GitHub repository.
-
-
-## Requirements
-
-1. A Spark DataFrame is created from the dataset. (5 points)
-
-2. A temporary table of the original DataFrame is created. (10 points)
-
-3. A query is written that returns the average price, rounded to two decimal places, for a four-bedroom house that was sold in each year. (5 points)
-
-4. A query is written that returns the average price, rounded to two decimal places, of a home that has three bedrooms and three bathrooms. (5 points)
-
-5. A query is written that returns the average price of a home with three bedrooms, three bathrooms, two floors, and is greater than or equal to 2,000 square feet for each year built rounded to two decimal places. (5 points)
-
-6.  A query is written that returns the view rating for the average price for homes that are greater than or equal to $350,000, rounded to two decimal places. (The output shows the run time for this query.) (10 points)
-
-7.  A cache of the temporary "home_sales" table is created and validated. (10 points)
-
-8.  The query from step 6 is run on the cached temporary table, and the run time is computed. (10 points)
-
-9.  A partition of the home sales dataset by the "date_built" field is created, and the formatted parquet data is read. (10 points)
-
-10. A temporary table of the parquet data is created. (10 points)
-
-11. The query from step 6 is run on the parquet temporary table, and the run time is computed. (10 points)
-
-12. The "home_sales" temporary table is uncached and verified. (10 points)
+    - **Unchached data runtime:** 1.2410962581634521 seconds
+    - **Cached data runtime:** 1.0017509460449219 seconds
+    - **Partitioned parquet data runtime:** 2.0394458770751953 seconds
 
 ---
 
